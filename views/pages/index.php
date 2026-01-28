@@ -1,5 +1,6 @@
   <h1>トレーナー一覧</h1>
   <a href="input.php">登録</a>
+  <a href="input.php">新規登録</a>
 
   <table>
     <tr>
@@ -17,6 +18,7 @@
         <td><?= $user['area'] ?></td>
         <td><?= $user['field'] ?></td>
         <td>
+          <a href="register.php">本登録</a>
           <a href="show.php?id=<?= $user['id'] ?>">詳細</a>
           <a href="edit.php?id=<?= $user['id'] ?>">編集</a>
         </td>

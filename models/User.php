@@ -1,11 +1,12 @@
 <?php
-include __DIR__ . '/../functions.php';
+require_once __DIR__ . '/../functions.php';
 
 Class User {
     private $pdo;//Classのプロパティ
     // ユーザクラスを生成するたびにDB接続関数を実行する
     public function __construct() {
-        $this->pdo = connect_to_db_pre();
+        $this->pdo = connect_to_db_pre();//ローカルホスト
+        // $this->pdo = connect_to_db();//さくら
     }
     
     /**
@@ -13,7 +14,24 @@ Class User {
      * @return array
      **/
     public function getAll() {
-        $sql = 'SELECT * FROM users_table ORDER BY id DESC';
+        $sql = 'SELECT
+                    u.id,
+                    u.username,
+                    u.name,
+                    u.sex,
+                    u.birthday,
+                    p.area,
+                    p.field,
+                    p.speciality,
+                CASE
+                    WHEN p.user_id IS NULL THEN 0
+                    ELSE 1
+                END AS is_registered
+                FROM users_table u
+                LEFT JOIN trainer_profile p
+                    ON u.id = p.user_id
+                WHERE u.role = "trainer"
+                AND u.deleted_at IS NULL;';
         $stmt = $this->pdo->prepare($sql);
 
         try {
@@ -25,6 +43,7 @@ Class User {
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $users;
     }
+
     /* 新規ユーザーを作成する
     * @param string $name
     * @param string $email
@@ -45,6 +64,8 @@ Class User {
 
         try {
         $stmt->execute();
+        //最後にINSERTしたIDをModel
+        return $this->pdo->lastInsertId();
         } catch (PDOException $e) {
         echo "ユーザー作成エラー: " . $e->getMessage();
         exit;
@@ -98,10 +119,11 @@ Class User {
     * @param string $email
     * @return int
     **/
-    public function register($user_id, $password, $speciality, $qualify, $bio) {
+    public function register($user_id, $area, $field, $speciality, $qualify, $bio) {
 
         $sql = "INSERT INTO trainer_profile (user_id, area, field, speciality, qualify, bio, created_at) VALUES (:user_id, :area, :field, :speciality, :qualify, :bio, now())";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':area', $area);
         $stmt->bindParam(':field', $field);
         $stmt->bindParam(':speciality', $speciality);

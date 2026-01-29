@@ -1,8 +1,10 @@
 <?php
 include 'models/User.php';
+session_start();
+$user_id = $_SESSION['user_id'];
 
-$userModel = new User();
-$userModel->register($user_id, $password, $speciality, $qualify, $bio);
+$userModels = new User();
+$users = $userModels->view($user_id);
 
 include 'views/common/header.php';
 include 'views/pages/register.php';

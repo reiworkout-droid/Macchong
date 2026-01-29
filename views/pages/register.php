@@ -1,20 +1,24 @@
   <?php
     include 'models/User.php';
 
-    //uses_tableのidをuser_idとして取得
-    $sql = 'SELECT * FROM users_table WHERE id=:id AND deleted_at is NULL';
-    $user_id = $_POST['id'];
+    $user_id = $_GET['id'];
+
+    $userModel = new User();
+    $users = $userModels->view($user_id);
+
 
   ?>
   <h1>ユーザー作成</h1>
 
-  <form action="register.php" method="POST">
+  <form action="register_act.php" method="POST">
 
     <p>
-      <label>氏名:</label>
-
+      <input type="hidden" name="user_id" value="<?= $record["id"] ?>">
     </p>    
-
+    <p>
+      <label>氏名:</label>
+      <input type="text" value="<?= $record["name"] ?>">
+    </p>    
     <p>
       <label>活動エリア:</label>
       <select name="area" id="area">

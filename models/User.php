@@ -116,6 +116,29 @@ Class User {
         }
     }
 
+    /* 対象idを参照する
+    * @param string $name
+    * @param string $email
+    * @return int
+    **/
+    public function view($user_id) {
+
+        $sql = 'SELECT * FROM users_table WHERE id=:id AND deleted_at is NULL';
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+
+        try {
+        $status = $stmt->execute();
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $record;
+    }
+
 
 
 }

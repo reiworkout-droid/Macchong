@@ -9,5 +9,4 @@ $users = $userModels->view($user_id);
 include 'views/common/header.php';
 include 'views/pages/register.php';
 include 'views/common/footer.php';
-header('Location: index.php');
 exit();

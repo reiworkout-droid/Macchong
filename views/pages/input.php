@@ -1,6 +1,6 @@
   <h1>ユーザー作成</h1>
 
-  <form action="create.php" method="POST">
+  <form action="action/create.php" method="POST">
     <p>
       <label>ユーザーネーム:</label>
       <input type="email" name="username" placeholder="メールアドレスを入力して下さい" required>

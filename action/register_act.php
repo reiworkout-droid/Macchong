@@ -20,5 +20,5 @@ $bio = $_POST["bio"];
 
 $userModel = new User();
 $userModel->register($user_id, $area, $field, $speciality, $qualify, $bio);
-
+header('Location: ../index.php');
 exit();

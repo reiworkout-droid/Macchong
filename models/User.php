@@ -98,10 +98,11 @@ Class User {
     * @param string $email
     * @return int
     **/
-    public function register($user_id, $password, $speciality, $qualify, $bio) {
+    public function register($user_id, $area, $field, $speciality, $qualify, $bio) {
 
         $sql = "INSERT INTO trainer_profile (user_id, area, field, speciality, qualify, bio, created_at) VALUES (:user_id, :area, :field, :speciality, :qualify, :bio, now())";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':area', $area);
         $stmt->bindParam(':field', $field);
         $stmt->bindParam(':speciality', $speciality);

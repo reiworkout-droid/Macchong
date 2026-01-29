@@ -1,5 +1,5 @@
 <?php
-include 'models/User.php';
+include '../models/User.php';
 
 if (
   !isset($_POST['username']) || $_POST['username'] === '' ||
@@ -21,5 +21,7 @@ $role = $_POST["role"];
 
 $userModel = new User();
 $userModel->create($username, $password, $name, $sex, $birthday, $role);
+$user_id = $this->pdo->lastInsertId();
+$_SESSION['user_id'] = $user_id;
 
 header('Location: index.php');

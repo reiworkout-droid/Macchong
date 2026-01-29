@@ -1,25 +1,24 @@
 <?php
-include 'models/User.php';
+include '../models/User.php';
 
 if (
-  !isset($_POST['user_id']) || $_POST['user_id'] === '' ||
-  !isset($_POST['area']) || $_POST['area'] === '' ||
-  !isset($_POST['field']) || $_POST['field'] === '' ||
-  !isset($_POST['speciality']) || $_POST['speciality'] === '' ||
-  !isset($_POST['qualify']) || $_POST['qualify'] === '' ||
-  !isset($_POST['bio']) || $_POST['bio'] === '' 
+  empty($_POST['user_id']) ||
+  empty($_POST['area']) ||
+  !isset($_POST['field']) || !is_array($_POST['field']) || count($_POST['field']) === 0 ||
+  !isset($_POST['speciality']) || !is_array($_POST['speciality']) || count($_POST['speciality']) === 0 ||
+  empty($_POST['qualify']) ||
+  empty($_POST['bio'])
 ) {
   exit('paramError');
 }
-
 $user_id = $_POST["user_id"];
 $area = $_POST["area"];
-$field = $_POST["field"];
-$speciality = $_POST["speciality"];
+$field = implode(',', $_POST['field']);
+$speciality = implode(',', $_POST['speciality']);
 $qualify = $_POST["qualify"];
 $bio = $_POST["bio"];
 
 $userModel = new User();
-$userModel->create($user_id, $area, $field, $speciality, $qualify, $bio);
+$userModel->register($user_id, $area, $field, $speciality, $qualify, $bio);
 
-header('Location: index.php');
+exit();

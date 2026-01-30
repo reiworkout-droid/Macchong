@@ -1,0 +1,53 @@
+#form {
+    margin-top: 50px;
+}
+
+.position {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.positionLeft {
+    grid-template-columns: 1/2;    
+}
+
+.positionRight {
+    grid-template-columns: 1/2;    
+}
+
+.btnArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+#inputBtn {
+    background: #2563eb;
+    color: #fff;
+}
+
+#inputBtn:hover {
+    background: #1e4fd8;
+}
+
+#returnBtn {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+#returnBtn:hover {
+  background: #2563eb;
+  color: #fff;
+}

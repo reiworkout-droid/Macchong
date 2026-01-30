@@ -4,12 +4,11 @@ h1 {
     font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans", "Helvetica Neue", "Arial", sans-serif;
 }
 
-footer {
-    position: relative;
-}
-
 body {
     width: 80%;
+    background: #f2f3f5;
+    color: #222;
+
     margin: 0 auto;
     font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Sans", "Noto Sans", "Helvetica Neue", "Arial", sans-serif;
 }

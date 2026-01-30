@@ -1,3 +1,5 @@
+  <h1>ログイン</h1>
+  
   <form action="action/login_act.php" method="POST">
     <p>
       <label>ユーザーネーム:</label>

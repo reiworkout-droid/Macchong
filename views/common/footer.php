@@ -1,6 +1,6 @@
     </main>
     <footer>
-        <p><?= date('Y') ?> ユーザー管理システム</p>
+        <p id="footer"><?= date('Y') ?> TreNavi</p>
     </footer>
 </body>
 </html>

@@ -69,7 +69,7 @@ Class User {
                 WHERE u.id = :id
                 AND u.deleted_at IS NULL;';
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
     try {
         $stmt->execute();
     } catch (PDOException $e) {

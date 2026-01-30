@@ -1,4 +1,4 @@
-<h1>ユーザー作成</h1>
+<h1>トレーナー登録</h1>
 
 <form action="action/register_act.php" method="POST">
 

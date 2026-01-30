@@ -3,6 +3,7 @@
 
   <table class="trainer-table">
     <tr>
+      <th>ユーザーネーム</th>
       <th>名前</th>
       <th>年齢</th>
       <th>性別</th>
@@ -18,14 +19,9 @@
         <td><?= htmlspecialchars($user['area_ja']) ?></td>
         <td><?= htmlspecialchars($user['field_ja']) ?></td>
         <td>
-<<<<<<< Updated upstream
-          <a href="register.php?id=<?= $user['id'] ?>">本登録</a>
-          <a href="show.php?id=<?= $user['id'] ?>">詳細</a>
-          <a href="edit.php?id=<?= $user['id'] ?>">編集</a>
-=======
+
           <a href="register.php?id=<?= $user['id'] ?>" class="btn" id="registerBtn">本登録</a>
           <a href="show.php?id=<?= $user['id'] ?>" class="btn" id="showBtn">詳細</a>
->>>>>>> Stashed changes
         </td>
       </tr>
     <?php endforeach; ?>

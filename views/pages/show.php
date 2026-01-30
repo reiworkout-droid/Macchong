@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
   <h1>トレーナー詳細</h1>
   <p class="position"><strong class="positionLeft">ユーザーネーム:</strong> <?= $user['username'] ?></p>
   <p class="position"><strong class="positionLeft">名前:</strong> <?= $user['name'] ?></p>
@@ -15,4 +13,3 @@
     <a href="delete.php?id=<?= $user['id'] ?>" onclick="return confirm('本当に削除しますか？');" class="btn" id="deleteBtn">削除</a>
     <a href="index.php" class="btn" id="returnBtn">戻る</a>
   </p>
->>>>>>> Stashed changes

@@ -44,6 +44,42 @@ Class User {
         return $users;
     }
 
+    /**
+     * 指定したIDのユーザーを取得する
+     **/
+    public function getById($user_id) {
+        $sql = 'SELECT
+                    u.id,
+                    u.username,
+                    u.name,
+                    u.sex,
+                    u.birthday,
+                    p.area,
+                    p.field,
+                    p.speciality,
+                    p.qualify,
+                    p.bio,
+                CASE
+                    WHEN p.user_id IS NULL THEN 0
+                    ELSE 1
+                END AS is_registered
+                FROM users_table u
+                LEFT JOIN trainer_profile p
+                    ON u.id = p.user_id
+                WHERE u.id = :id
+                AND u.deleted_at IS NULL;';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+    try {
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "データ取得エラー: " . $e->getMessage();
+        exit;
+    }
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $user;
+    }
+
     /* 新規ユーザーを作成する
     * @param string $name
     * @param string $email

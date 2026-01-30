@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 <?php
 session_start();
 require_once 'models/User.php';
@@ -7,6 +6,8 @@ require_once 'functions.php';
 
 // $user_id = $_SESSION['user_id'];
 $user_id = (int)$_GET['id'];
+
+
 
 $userModel = new User();
 $userDetail = $userModel->getById($user_id);
@@ -28,8 +29,8 @@ if ($user) {
 
 $title = '詳細画面';
 $page_css = 'show.css';
+
 include 'views/common/header.php';
 include 'views/pages/show.php';
 include 'views/common/footer.php';
 exit();
->>>>>>> Stashed changes

@@ -17,6 +17,7 @@ unset($user);
 
 
 $title = 'トレーナー一覧';
+$page_css = 'index.css';
 include 'views/common/header.php';
 include 'views/pages/index.php';
 include 'views/common/footer.php';

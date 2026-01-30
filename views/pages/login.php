@@ -1,15 +1,24 @@
+<<<<<<< Updated upstream
   <form action="action/login_act.php" method="POST">
     <p>
       <label>ユーザーネーム:</label>
       <input type="email" name="username" placeholder="メールアドレスを入力して下さい" required>
+=======
+  <h1>ログイン</h1>
+  
+  <form action="action/login_act.php" id="form" method="POST">
+    <p class="position" >
+      <label class="positionLeft">ユーザーネーム:</label>
+      <input type="email" name="username" class="positionRight" placeholder="メールアドレスを入力して下さい" required>
+>>>>>>> Stashed changes
     </p>
-    <p>
-      <label>パスワード:</label>
-      <input type="text" name="password" placeholder="パスワードを入力して下さい"required>
+    <p class="position">
+      <label class="positionLeft">パスワード:</label>
+      <input type="text" name="password" class="positionRight" placeholder="パスワードを入力して下さい"required>
     </p>
 
     <div class="login">
-        <button class="loginButton">ログイン</button>
+        <button class="btn" id="loginButton">ログイン</button>
     </div>
     <div class="register">
         <span class="refisterOr">または</span>

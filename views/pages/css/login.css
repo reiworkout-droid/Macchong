@@ -1,0 +1,49 @@
+#form {
+    margin-top: 60px;
+}
+
+.position {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.positionLeft {
+    grid-template-columns: 1/2;    
+}
+
+.positionRight {
+    grid-template-columns: 1/2;    
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+#loginButton {
+    background: #2563eb;
+    color: #fff;
+}
+
+#loginButton:hover {
+    background: #1e4fd8;
+}

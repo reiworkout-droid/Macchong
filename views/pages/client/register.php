@@ -53,6 +53,6 @@
   <p>
   <p>
     <button type="submit">作成</button>
-    <a href="index.php">戻る</a>
+    <a href="trainersHome.php">戻る</a>
   </p>
 </form>

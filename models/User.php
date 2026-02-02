@@ -143,10 +143,7 @@ Class User {
             session_regenerate_id(true);
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
-            header('Location: ../index.php');
-            exit();
         }
-
     }
 
 

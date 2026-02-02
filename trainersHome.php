@@ -1,7 +1,7 @@
 <?php
 require_once 'models/User.php';
 require_once 'functions.php';
-session_start();  
+session_start();   
 
 $userModels = new User();
 $users = $userModels->getAll();
@@ -17,10 +17,9 @@ foreach ($users as &$user) {
 unset($user);
 
 $username = $_SESSION['username'] ?? null;
-
 $title = 'トレーナー一覧';
 $page_css = 'index.css';
 include 'views/common/header.php';
-include 'views/pages/client/index.php';
+include 'views/pages/trainer/trainersHome.php';
 include 'views/common/footer.php';
 exit();

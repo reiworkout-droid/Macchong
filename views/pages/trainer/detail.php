@@ -11,5 +11,5 @@
   <p class="btnArea">
     <a href="edit.php?id=<?= $user['id'] ?>" class="btn" id="editBtn">編集</a>
     <a href="delete.php?id=<?= $user['id'] ?>" onclick="return confirm('本当に削除しますか？');" class="btn" id="deleteBtn">削除</a>
-    <a href="index.php" class="btn" id="returnBtn">戻る</a>
+    <a href="trainersHome.php" class="btn" id="returnBtn">戻る</a>
   </p>

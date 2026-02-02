@@ -31,5 +31,11 @@ $user_id = $userModel->create(
   $_POST['role']
   );
 $_SESSION['user_id'] = $user_id;
-header('Location: index.php');
-exit();
+
+if ($role === 'trainer') {
+  header('Location: ../trainersHome.php');
+  exit();
+} else {
+  header('Location: ../index.php');
+  exit();
+}

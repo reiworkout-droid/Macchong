@@ -7,6 +7,6 @@ $userModels = new User();
 $users = $userModels->view($user_id);
 
 include 'views/common/header.php';
-include 'views/pages/register.php';
+include 'views/pages/trainer/register.php';
 include 'views/common/footer.php';
 exit();

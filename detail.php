@@ -31,6 +31,6 @@ $title = '詳細画面';
 $page_css = 'show.css';
 
 include 'views/common/header.php';
-include 'views/pages//client/show.php';
+include 'views/pages/trainer/detail.php';
 include 'views/common/footer.php';
 exit();

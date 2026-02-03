@@ -22,8 +22,8 @@
         <td><?= htmlspecialchars($user['area_ja']) ?></td>
         <td><?= htmlspecialchars($user['field_ja']) ?></td>
         <td>
-
-          <a href="show.php?id=<?= $user['id'] ?>" class="btn" id="showBtn">詳細</a>
+        <a href="action/like_create.php?trainer_id=<?= $user['id'] ?>">♥<?= $user['like_count'] ?></a> 
+        <a href="show.php?id=<?= $user['id'] ?>" class="btn" id="showBtn">詳細</a>
         </td>
       </tr>
     <?php endforeach; ?>

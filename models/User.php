@@ -23,13 +23,22 @@ Class User {
                     p.area,
                     p.field,
                     p.speciality,
-                CASE
-                    WHEN p.user_id IS NULL THEN 0
-                    ELSE 1
-                END AS is_registered
+                    CASE
+                        WHEN p.user_id IS NULL THEN 0
+                        ELSE 1
+                    END AS is_registered,
+                    COALESCE(result_table.like_count, 0) AS like_count
                 FROM users_table u
-                LEFT JOIN trainer_profile p
+                LEFT OUTER JOIN trainer_profile p
                     ON u.id = p.user_id
+                LEFT OUTER JOIN (
+                    SELECT
+                        trainer_id,
+                        COUNT(*) AS like_count
+                    FROM like_table
+                    GROUP BY trainer_id
+                ) AS result_table
+                    ON u.id = result_table.trainer_id
                 WHERE u.role = "trainer"
                 AND u.deleted_at IS NULL;';
         $stmt = $this->pdo->prepare($sql);
@@ -196,4 +205,44 @@ Class User {
 
 
 
+    /* いいね数の表示
+    * @param string $user_id
+    * @param string $trainer_id
+    * @return int
+    **/
+    public function addLike($user_id, $trainer_id) {
+
+        //likeの有無を確認する
+        $sql = 'SELECT COUNT(*) FROM like_table WHERE user_id=:user_id AND trainer_id=:trainer_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindValue(':trainer_id', $trainer_id, PDO::PARAM_STR);
+
+        try {
+        $status = $stmt->execute();
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+
+        $like_count = $stmt->fetchColumn();
+
+        if ($like_count > 0) {
+            $sql = 'DELETE FROM like_table WHERE user_id=:user_id AND trainer_id=:trainer_id';
+        } else {
+            $sql = 'INSERT INTO like_table(id, user_id, trainer_id,  created_at) VALUES(NULL, :user_id, :trainer_id, now())';
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindValue(':trainer_id', $trainer_id, PDO::PARAM_STR);
+        
+        try {
+        $status = $stmt->execute();
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+    }
 }
+

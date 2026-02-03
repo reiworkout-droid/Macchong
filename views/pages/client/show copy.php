@@ -10,5 +10,6 @@
   <p class="position"><strong class="positionLeft">プロフィール:</strong> <?= $user['bio'] ?></p>
   <p class="btnArea">
     <!-- likeに変える🤗⇩ -->
+    <!-- <a href="delete.php?id=<?= $user['id'] ?>" onclick="return confirm('本当に削除しますか？');" class="btn" id="deleteBtn">削除</a> -->
     <a href="index.php" class="btn" id="returnBtn">戻る</a>
   </p>

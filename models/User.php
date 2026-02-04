@@ -5,8 +5,8 @@ Class User {
     private $pdo;//Classのプロパティ
     // ユーザクラスを生成するたびにDB接続関数を実行する
     public function __construct() {
-        $this->pdo = connect_to_db_pre();//ローカルホスト
-        // $this->pdo = connect_to_db();//さくら
+        // $this->pdo = connect_to_db_pre();//ローカルホスト
+        $this->pdo = connect_to_db();//さくら
     }
     
     /**
